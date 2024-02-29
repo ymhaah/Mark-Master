@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>test website</title>
+    </head>
+    <body>
+        <input type="file" id="fileInput" />
+        <button onclick="uploadImage()">Upload Image</button>
+        <div id="message"></div>
+
+        <script>
+            function uploadImage() {
+                const fileInput = document.getElementById("fileInput");
+                const file = fileInput.files[0];
+
+                if (!file) {
+                    alert("Please select an image to upload.");
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append("image", file);
+
+                fetch("/upload", {
+                    method: "POST",
+                    body: formData,
+                })
+                    .then((response) => response.text())
+                    .then((data) => {
+                        const messageElement =
+                            document.getElementById("message");
+                        messageElement.textContent = data;
+                    })
+                    .catch((error) => {
+                        console.error("Error uploading image:", error);
+                    });
+            }
+        </script>
+    </body>
+</html>
