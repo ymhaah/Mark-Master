@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="" />
+        <!-- <meta
+            name="keywords"
+            content="grid, flip, gsap, switch, slideshow, animation"
+        /> -->
+        <meta name="author" content="Youssef Hafnawy" />
+        <meta name="color-scheme" content="dark" />
+        <link rel="stylesheet" href="./style/index.css" />
+        <link rel="icon" type="image/png" href="Reach_Ratio.png" />
+        <title>Mark Master</title>
+    </head>
+    <body>
+        <main id="waterMark">
+            <div id="image-upload">
+                <div class="uploader">
+                    <span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 -960 960 960"
+                            width="24"
+                        >
+                            <path
+                                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h360v80H200v560h560v-360h80v360q0 33-23.5 56.5T760-120H200Zm480-480v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80ZM240-280h480L570-480 450-320l-90-120-120 160Zm-40-480v560-560Z"
+                            />
+                        </svg>
+                    </span>
+                    <span>Drag Image here to upload.</span>
+                    <span>
+                        Alternatively, you can select a file by
+                        <br /><strong>clicking here</strong>
+                    </span>
+                    <input
+                        type="file"
+                        id="file-uploader"
+                        accept="image/png, image/jpeg, image/jpg"
+                        aria-label="image upload area"
+                    />
+                </div>
+                <footer>
+                    <input
+                        type="text"
+                        id="waterMark-text"
+                        aria-label="waterMark text input"
+                        placeholder="WaterMark"
+                        maxlength="10"
+                    />
+                    <a
+                        href="#"
+                        download="image.png"
+                        class="button btn-primary"
+                        id="download-button"
+                        role="button"
+                        data-active="false"
+                        disabled="true"
+                        aria-disabled="true"
+                    >
+                        <span class="visually-hidden">download</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 -960 960 960"
+                            width="24"
+                        >
+                            <path
+                                d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"
+                            />
+                        </svg>
+                    </a>
+                </footer>
+            </div>
+            <!-- <div id="waterMark-settings"></div> -->
+
+            <!-- <div class="modal">
+                <div class="modal-body">
+                    <h2 class="modal-title">Upload a file</h2>
+                    <p class="modal-description">Attach the file below</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-primary">Upload</button>
+                    <button type="button" class="btn-secondary">Cancel</button>
+                </div>
+            </div> -->
+        </main>
+        <noscript>
+            <div class="no-script">
+                <p>Please enable JavaScript to view this website.</p>
+            </div>
+        </noscript>
+        <script nomodule="">
+            var div = document.createElement("div");
+            var p = document.createElement("P");
+            div.classList.add("old-script");
+            p.textContent =
+                "Please update your browser to modern version to view this website.";
+            div.appendChild(p);
+            document.body.appendChild(div);
+        </script>
+        <script type="module" src="./scripts/index.js"></script>
+    </body>
+</html>
