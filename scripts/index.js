@@ -1,14 +1,10 @@
 "use strict";
-// TODO: separate between the canvas creation and adding the watermark
-// TODO: control watermark setting
-// Array to store selected images
+// selected images Array
 const images = [];
-// Input and element references
 const waterMarkTextInput = document.querySelector("#waterMark-text");
 const inputImageUploader = document.querySelector("input#file-uploader");
 const uploadedImageArea = document.querySelector(".uploader");
 const downloadBtn = document.querySelector("#download-button");
-// Event listener for file selection via input
 if (inputImageUploader) {
     inputImageUploader.addEventListener("change", (e) => {
         let imagesFiles = e.target.files;
@@ -21,7 +17,7 @@ if (inputImageUploader) {
         }
     });
 }
-// Event listeners for drag-and-drop functionality
+// Event listeners for drag-and-drop
 if (uploadedImageArea) {
     uploadedImageArea.addEventListener("drop", (e) => {
         e.preventDefault();
@@ -90,7 +86,7 @@ function addWaterMark(imageFile, waterMarkText, xCordOfText, yCordOfText, textSt
         let ctx = canvas.getContext("2d");
         let img = new Image();
         img.onload = () => {
-            let scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+            let scale = Math.min(canvas.width / img.width, canvas.height / img.height);
             let newWidth = img.width * scale;
             let newHeight = img.height * scale;
             let x = canvas.width / 2 - newWidth / 2;
@@ -118,3 +114,9 @@ function enableDownloadButton(url) {
     downloadBtn.setAttribute("aria-disabled", "false");
     downloadBtn.href = url;
 }
+// TODO: in the website make what is shown not the canvas but an image with text for performance and easy of dev
+// TODO: make it responsive with the website
+// TODO: add support for zoom and moving in the image to fix large image problems
+// TODO: add support for more than one image at a time
+// TODO: separate between the canvas creation and adding the watermark
+// TODO: control watermark setting
