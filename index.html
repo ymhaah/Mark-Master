@@ -32,37 +32,6 @@
     <body>
         <main id="waterMark">
             <div id="image-upload">
-                <!-- <header>
-                    <input
-                        type="text"
-                        id="waterMark-text"
-                        aria-label="waterMark text input"
-                        placeholder="WaterMark"
-                        maxlength="10"
-                    />
-                    <a
-                        href="#"
-                        download="image.png"
-                        class="button btn-primary"
-                        id="download-button"
-                        role="button"
-                        data-active="false"
-                        disabled="true"
-                        aria-disabled="true"
-                    >
-                        <span class="visually-hidden">download</span>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24"
-                            viewBox="0 -960 960 960"
-                            width="24"
-                        >
-                            <path
-                                d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"
-                            />
-                        </svg>
-                    </a>
-                </header> -->
                 <div class="uploader">
                     <span>
                         <svg
@@ -76,11 +45,10 @@
                             />
                         </svg>
                     </span>
-                    <span>Drag Image here to upload.</span>
-                    <span>
-                        Alternatively, you can select a file by
-                        <br /><strong>clicking here</strong>
-                    </span>
+                    <button type="button" class="button btn-primary">
+                        Select File
+                    </button>
+                    <span>or drag your files here</span>
                     <input
                         type="file"
                         id="file-uploader"
@@ -89,7 +57,37 @@
                     />
                 </div>
             </div>
-            <!-- <div id="waterMark-settings"></div> -->
+            <!-- <div id="waterMark-settings">
+                <input
+                type="text"
+                id="waterMark-text"
+                aria-label="waterMark text input"
+                placeholder="WaterMark"
+                maxlength="10"
+            />
+            <a
+                href="#"
+                download="image.png"
+                class="button btn-primary"
+                id="download-button"
+                role="button"
+                data-active="false"
+                disabled="true"
+                aria-disabled="true"
+            >
+                <span class="visually-hidden">download</span>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                >
+                    <path
+                        d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"
+                    />
+                </svg>
+            </a>
+            </div> -->
 
             <!-- <div class="modal">
                 <div class="modal-body">
