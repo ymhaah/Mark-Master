@@ -14,9 +14,43 @@
     --error-clr: #ff5252;
     color-scheme: dark;
 
+    --bg-light-clr: #e4ecfa;
+
     --radius: 0.3rem;
 
-    --header-height: 3rem;
+    --white-space: 2rem;
+
+    --header-height: 4rem;
+}
+
+.button.dark-single {
+    --background: none;
+    --rectangle: #242836;
+    --success: #4bc793;
+}
+.button.white-single {
+    --background: none;
+    --rectangle: #f5f9ff;
+    --arrow: #275efe;
+    --success: #275efe;
+    --shadow: rgba(10, 22, 50, 0.1);
+}
+.button.dark {
+    --background: #242836;
+    --rectangle: #1c212e;
+    --arrow: #f5f9ff;
+    --text: #f5f9ff;
+    --success: #2f3545;
+}
+
+.button {
+    --background: #275efe;
+    --rectangle: #184fee;
+    --success: #4672f1;
+    --text: #fff;
+    --arrow: #fff;
+    --checkmark: #fff;
+    --shadow: rgba(10, 22, 50, 0.24);
 }
 
 html,
@@ -48,6 +82,9 @@ select,
 textarea {
     font: inherit;
 }
+::-moz-focus-inner {
+    border: none;
+}
 strong {
     color: var(--primary-clr);
     font-weight: 700;
@@ -74,10 +111,12 @@ button,
     font-weight: 400;
     font-size: 1.2rem;
     line-height: 1;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     border-radius: var(--radius);
     border: none;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
     box-shadow: 0 2px 8px -1px rgba(10, 22, 50, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-primary {
     color: var(--text-clr);
@@ -90,13 +129,11 @@ button,
 :where(button, .button):hover {
     opacity: 0.8;
 }
-:where(button, .button, input[type="file"]):focus-visible {
-    opacity: 0.8;
-    outline-style: solid;
-    outline-width: 0.1em;
-    outline-offset: 0.3em;
-    outline-color: var(--primary-clr);
+:where(button, .button):active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 4px -1px var(--shadow);
 }
+
 input[type="text"] {
     padding: var(--gap);
     background-color: transparent;
@@ -128,9 +165,10 @@ svg {
     isolation: isolate;
 }
 svg {
+    --icon-size: 2rem;
     fill: var(--text-clr);
-    width: 3rem;
-    height: 3rem;
+    width: var(--icon-size);
+    height: var(--icon-size);
 }
 header {
     width: 100%;
@@ -139,26 +177,41 @@ header {
     flex-direction: row;
     gap: 1rem;
     justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-clr);
+    padding: 1px var(--white-space);
+}
+.logo a {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    color: var(--text-clr);
+    text-decoration: none;
+    opacity: 0.7;
+}
+.logo h1 {
+    font-size: 1.2rem;
+    margin: auto;
+    font-weight: 500;
 }
 
 main#waterMark {
     width: 100%;
-    height: calc(100svh - var(--header-height));
+    height: calc(100svh - var(--header-height) * 2);
     display: flex;
     flex-direction: row;
 }
-#image-upload,
-#waterMark-settings {
-    width: 50%;
+#image-upload {
+    width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: 1rem var(--white-space);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .uploader {
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -221,6 +274,16 @@ a#download-button {
     height: 100%;
 }
 
+footer {
+    width: 100%;
+    height: var(--header-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-clr);
+    padding: 1px var(--white-space);
+}
+
 .visually-hidden {
     position: absolute;
     position: absolute !important;
@@ -233,18 +296,17 @@ a#download-button {
     white-space: nowrap !important;
     border: 0 !important;
 }
-.old-script,
-.no-script {
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    position: fixed;
-    padding: 1rem;
-    text-align: center;
-    background-color: #242424;
-    color: rgba(255, 255, 255, 0.87);
+@media screen and (max-width: 768px) {
+    :root {
+        --white-space: 1rem;
+    }
+    header {
+        justify-content: centers;
+    }
+    nav {
+        display: none;
+    }
 }
-
 @supports not (height: 100svh) {
     main#waterMark {
         height: calc(100vh - var(--header-height));
@@ -254,5 +316,18 @@ a#download-button {
     html,
     body {
         overflow: hidden;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-delay: 0s !important;
+        transition-duration: 0s !important;
     }
 }

@@ -1,7 +1,14 @@
-import { useState } from "react";
-
 function Footer() {
-    return <footer>header</footer>;
+    const currentYear = new Date().getFullYear();
+
+    return (
+        <footer>
+            <p>
+                Copy Right &copy;
+                {currentYear} -Mark Master-
+            </p>
+        </footer>
+    );
 }
 
 export default Footer;
