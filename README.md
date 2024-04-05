@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# Mark Master
+> Not finished | Start at: Feb 29, 2024
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+under development
 
-Currently, two official plugins are available:
+### Built with
+-   HTML
+-   CSS
+-   JS
+-   [Typescript](https://www.typescriptlang.org/) - JavaScript with types
+-   [React](https://react.dev/) - JS library.
+-   [Vite](https://vitejs.dev/) - JS bundling tool.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Useful resources
 
-## Expanding the ESLint configuration
+Check out my latest previous articles:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+-   [Top 5 websites to sharpen your front-end skills.](https://dev.to/ymhaah/top-5-websites-to-sharpen-your-front-end-skills-3ao0)
+-   [Why couldn't you get a job as a freelancer?](https://dev.to/ymhaah/why-couldnt-you-get-a-job-as-a-freelancer-1jm8)
+-   [Top 5 Icon websites for devs and designers!!!](https://dev.to/ymhaah/top-5-icon-websites-for-devs-and-designers-53mh)
+-   [30-Day React Learning Journey!](https://dev.to/ymhaah/series/20473)
 
-- Configure the top-level `parserOptions` property like this:
+## Author
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+-   professional links:
+    -   [Twitter / X](https://twitter.com/hafanwy)
+    -   [LinkedIn](https://www.linkedin.com/in/youssef-hafnawy/)
+    -   [Newsletter](https://hefnawystudio.substack.com/?utm_source=navbar&utm_medium=web&r=31jf6o)
+-   Hire me:
+    -   [UpWork](https://www.upwork.com/freelancers/~01acd8e5370e5646aa)
+-   Blog:
+    -   [Medium](https://medium.com/@ymhaah250)
+    -   [Dev.to](https://dev.to/ymhaah)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Free Services
+
+-   [Free Website performance Optimization](https://tally.so/r/nPzKaB)
+-   [Free Website Accessibility Optimization](https://tally.so/r/3lr2bp)
