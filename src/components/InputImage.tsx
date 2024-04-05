@@ -1,29 +1,31 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 function InputImage({
     updateImages,
     images,
+    updateFilesState,
 }: {
     updateImages: (newImages: File) => void;
     images: File[];
+    updateFilesState: (
+        newState: "waiting" | "loading" | "uploaded" | "downloading"
+    ) => void;
 }) {
     const inputImageUploader = useRef<HTMLInputElement>(null);
-    const uploadedImageArea = useRef<HTMLDivElement>(null);
 
-    if (inputImageUploader.current) {
-        inputImageUploader.current.addEventListener("change", (e) => {
+    useEffect(() => {
+        function handleFileChange(e: Event) {
+            console.log("f");
             const imagesFiles = (e.target as HTMLInputElement).files;
             if (imagesFiles) {
                 for (let i = 0; i < imagesFiles.length; i++) {
-                    updateImages(imagesFiles[i]);
+                    // updateImages(imagesFiles[i]);
+                    updateImages(imagesFiles[0]);
+                    updateFilesState("downloading");
                 }
-                // displayImage();
             }
-        });
-    }
-
-    if (uploadedImageArea.current) {
-        uploadedImageArea.current.addEventListener("drop", (e) => {
+        }
+        function handleDrop(e: DragEvent) {
             e.preventDefault();
             const imagesFiles = e.dataTransfer!.files;
             if (imagesFiles) {
@@ -36,20 +38,42 @@ function InputImage({
                             (image: File) => image.name !== imagesFiles[i].name
                         )
                     ) {
-                        updateImages(imagesFiles[i]);
+                        // updateImages(imagesFiles[i]);
+                        updateImages(imagesFiles[0]);
+                        updateFilesState("downloading");
                     }
                 }
-                // displayImage();
             }
-        });
-        uploadedImageArea.current.addEventListener("dragover", (e) =>
-            e.preventDefault()
-        );
-    }
+        }
+        function handleDragOver(e: DragEvent) {
+            e.preventDefault();
+        }
+        if (inputImageUploader.current) {
+            inputImageUploader.current.addEventListener(
+                "change",
+                handleFileChange
+            );
+            inputImageUploader.current.addEventListener("drop", handleDrop);
+            inputImageUploader.current.addEventListener(
+                "dragover",
+                handleDragOver
+            );
+        }
+
+        return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+            const inp = inputImageUploader.current;
+            if (inp) {
+                inp.removeEventListener("change", handleFileChange);
+                inp.removeEventListener("drop", handleDrop);
+                inp.removeEventListener("dragover", handleDragOver);
+            }
+        };
+    }, [images, updateFilesState, updateImages]);
 
     return (
         <div id="image-upload">
-            <div className="uploader" ref={uploadedImageArea}>
+            <div className="uploader">
                 <span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +91,7 @@ function InputImage({
                 <input
                     type="file"
                     ref={inputImageUploader}
-                    id="file-uploader"
+                    className="file-uploader"
                     accept="image/png, image/jpeg, image/jpg"
                     aria-label="image upload area"
                 />

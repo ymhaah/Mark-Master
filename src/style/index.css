@@ -176,7 +176,7 @@ header {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: var(--secondary-clr);
     padding: 1px var(--white-space);
@@ -194,6 +194,10 @@ header {
     margin: auto;
     font-weight: 500;
 }
+
+/* nav .button {
+    position: relative;
+} */
 
 main#waterMark {
     width: 100%;
@@ -229,7 +233,7 @@ main#waterMark {
 .uploader:not(:has(canvas)):hover {
     border: 2px dashed var(--primary-clr);
 }
-input#file-uploader {
+input.file-uploader {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -270,8 +274,16 @@ a#download-button {
 }
 
 #waterMark-settings {
-    width: 50%;
-    height: 100%;
+    width: 200px;
+    padding: 1rem;
+    background-color: var(--secondary-clr);
+    position: absolute;
+    cursor: grab;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: none;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    box-shadow: 0 2px 8px -1px rgba(10, 22, 50, 0.24);
 }
 
 footer {

@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 function Setting() {
-        // const waterMarkTextInput = document.querySelector(
+    // const waterMarkTextInput = document.querySelector(
     //     "#waterMark-text"
     // ) as HTMLInputElement;
 
@@ -7,8 +9,47 @@ function Setting() {
     //     "#download-button"
     // ) as HTMLAnchorElement;
 
+    const [isDragging, setIsDragging] = useState(false);
+    const [position, setPosition] = useState<{ x: number; y: number }>({
+        x: 0,
+        y: 0,
+    });
+    const [offset, setOffset] = useState<{ x: number; y: number }>({
+        x: 0,
+        y: 0,
+    });
+
+    const handleMouseDown = (e: MouseEventHandler) => {
+        if (e.currentTarget) {
+            setIsDragging(true);
+            const rect = e.currentTarget.getBoundingClientRect();
+            setOffset({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+            });
+        }
+    };
+
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        if (!isDragging) return;
+        setPosition({
+            x: e.clientX - offset.x,
+            y: e.clientY - offset.y,
+        });
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
     return (
-        <div id="waterMark-settings">
+        <div
+            id="waterMark-settings"
+            style={{ left: position.x, top: position.y }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+        >
             <input
                 type="text"
                 id="waterMark-text"

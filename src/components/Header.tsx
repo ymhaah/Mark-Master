@@ -1,13 +1,33 @@
-import { useRef, useState } from "react";
-// import { useGSAP } from "@gsap/react";
-
 function Header() {
-    const header = useRef<HTMLElement>(null);
-
-    const [isLoading, setIsLoading] = useState(false);
+    // const additionalButtons = () => {
+    //     switch (filesState.state) {
+    //         case "waiting":
+    //             return (
+    //                 <button className="button btn-primary">
+    //                     Select File
+    //                 </button>
+    //             );
+    //         case "downloading":
+    //             return (
+    //                 <button
+    //                     type="button"
+    //                     className="button btn-primary"
+    //
+    //                 >
+    //                     Download
+    //                 </button>
+    //             );
+    //         default:
+    //             return (
+    //                 <button type="button" className="button btn-primary">
+    //                     Select File
+    //                 </button>
+    //             );
+    //     }
+    // };
 
     return (
-        <header ref={header}>
+        <header>
             <div className="logo">
                 <a href="/index.html">
                     <svg
@@ -21,15 +41,7 @@ function Header() {
                     <h1 className="logo-text">Mark Master</h1>
                 </a>
             </div>
-            <nav>
-                <button
-                    type="button"
-                    className="button btn-primary"
-                    id="btn-file-uploader"
-                >
-                    Select File
-                </button>
-            </nav>
+            {/* <nav>{additionalButtons()}</nav> */}
         </header>
     );
 }

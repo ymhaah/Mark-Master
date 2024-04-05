@@ -3,17 +3,29 @@ import "./style/index.css";
 
 import Header from "./components/Header";
 import InputImage from "./components/InputImage";
+import Canvas from "./components/Canvas";
 import Footer from "./components/Footer";
+import Setting from "./components/Setting";
 
 const imagesContext = createContext<File[]>([]);
 
 function App() {
     // selected images Array
     const [images, setImages] = useState<File[]>([]);
-    // const [images, setImages] = useState<File[]>([]);
+    const [filesState, setFilesState] = useState<{
+        state: "waiting" | "loading" | "uploaded" | "downloading";
+    }>({
+        state: "waiting",
+    });
+    // const [waterMarkText, setWaterMarkText] = useState("");
 
     function updateImages(newImages: File) {
         setImages((prevImages) => [...prevImages, newImages]);
+    }
+    function updateFilesState(
+        newState: "waiting" | "loading" | "uploaded" | "downloading"
+    ) {
+        setFilesState({ state: newState });
     }
 
     // function displayImage() {
@@ -123,13 +135,36 @@ function App() {
     //     downloadBtn.href = url;
     // }
 
+    const websiteStates = () => {
+        switch (filesState.state) {
+            case "waiting":
+                return (
+                    <InputImage
+                        updateImages={updateImages}
+                        images={images}
+                        updateFilesState={updateFilesState}
+                    />
+                );
+            case "downloading":
+                return (
+                    <>
+                        <Canvas
+                            updateImages={updateImages}
+                            images={images}
+                            updateFilesState={updateFilesState}
+                        />
+                        <Setting />
+                    </>
+                );
+            default:
+                return <div id="error">error</div>;
+        }
+    };
     return (
         <>
             <imagesContext.Provider value={images}>
                 <Header />
-                <main id="waterMark">
-                    <InputImage updateImages={updateImages} images={images} />
-                </main>
+                <main id="waterMark">{websiteStates()}</main>
                 <Footer />
             </imagesContext.Provider>
         </>
@@ -138,9 +173,10 @@ function App() {
 
 export default App;
 
+// TODO: add support for more than one image at a time
+// TODO: add support for all website states
 // TODO: in the website make what is shown not the canvas but an image with text for performance and easy of dev
 // TODO: make it responsive with the website
 // TODO: add support for zoom and moving in the image to fix large image problems
-// TODO: add support for more than one image at a time
 // TODO: separate between the canvas creation and adding the watermark
 // TODO: control watermark setting
